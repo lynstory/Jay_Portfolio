@@ -1,0 +1,731 @@
+/* ============================================================
+   CSS 변수 (색상 팔레트 전체)
+   ============================================================ */
+:root {
+  --color-bg: #FAF9F7;
+  --color-bg-alt: #F2EFE9;
+  --color-text: #1C1C1E;
+  --color-muted: #6B6B6B;
+  --color-navy: #0F2148;
+  --color-gold: #C9A84C;
+  --color-gold-dark: #a8872e;
+  --color-card: #FFFFFF;
+  --color-border: #E8DFC8;
+  --color-overlay: rgba(15, 33, 72, 0.80);
+  --font-ko: 'Noto Sans KR', sans-serif;
+  --font-en: 'Cormorant Garamond', serif;
+  --nav-height: 72px;
+}
+
+/* ============================================================
+   기본 리셋 및 body
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-ko);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 스크롤바 커스텀 */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg-alt); }
+::-webkit-scrollbar-thumb { background: var(--color-gold); border-radius: 3px; }
+
+/* ============================================================
+   네비게이션
+   ============================================================ */
+#navbar {
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+#navbar.scrolled {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 20px rgba(15, 33, 72, 0.08);
+}
+
+.nav-logo {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--color-gold);
+  font-size: 1.6rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.nav-logo:hover { opacity: 0.8; }
+
+/* nav 링크 gold underline 슬라이드 */
+.nav-link {
+  font-family: var(--font-ko);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  position: relative;
+  transition: color 0.2s;
+}
+
+#navbar.scrolled .nav-link { color: var(--color-text); }
+#navbar:not(.scrolled) .nav-link { color: rgba(255, 255, 255, 0.85); }
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--color-gold);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover { color: var(--color-gold); }
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
+.nav-link.active { color: var(--color-gold); }
+
+/* 모바일 메뉴 */
+#mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+}
+
+#mobile-menu.open {
+  max-height: 320px;
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 0.875rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-border);
+  transition: color 0.2s, background 0.2s;
+}
+.mobile-nav-link:hover {
+  color: var(--color-gold);
+  background: rgba(201, 168, 76, 0.05);
+}
+.mobile-nav-link:last-child { border-bottom: none; }
+
+/* ============================================================
+   Hero 섹션
+   ============================================================ */
+#hero {
+  background: linear-gradient(150deg, #0a1730 0%, var(--color-navy) 50%, #162348 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 배경 기하학 패턴 — 얇은 diagonal gold 라인 */
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 80px,
+      rgba(201, 168, 76, 0.04) 80px,
+      rgba(201, 168, 76, 0.04) 81px
+    );
+  pointer-events: none;
+}
+
+.hero-role-label {
+  font-family: var(--font-ko);
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+}
+
+.hero-name-ko {
+  font-family: var(--font-ko);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.18em;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  line-height: 1.15;
+}
+
+.hero-name-en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--color-gold);
+  font-size: clamp(3.8rem, 11vw, 7.5rem);
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+
+.hero-tagline-ko {
+  font-family: var(--font-ko);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  letter-spacing: 0.05em;
+}
+
+.hero-tagline-en {
+  font-family: var(--font-en);
+  font-style: italic;
+  color: rgba(201, 168, 76, 0.7);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  letter-spacing: 0.03em;
+}
+
+/* CTA 버튼 */
+.btn-primary {
+  background: var(--color-gold);
+  color: var(--color-navy);
+  font-family: var(--font-ko);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-primary:hover {
+  background: var(--color-gold-dark);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-ko);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  padding: 1rem 2.5rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-outline:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
+/* 스크롤 인디케이터 */
+.scroll-indicator {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* Hero 프로필 이미지 */
+.hero-profile-wrap {
+  position: relative;
+  width: clamp(260px, 38vw, 420px);
+  height: clamp(320px, 46vw, 520px);
+}
+
+/* 배경 gold 원 — 장식 */
+.hero-profile-wrap::before {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  width: 100%;
+  height: 100%;
+  border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
+  border: 2px solid rgba(201, 168, 76, 0.25);
+  z-index: 0;
+}
+
+.hero-profile-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
+  border: 3px solid rgba(201, 168, 76, 0.4);
+  box-shadow: 0 24px 64px rgba(15, 33, 72, 0.4);
+}
+
+@media (max-width: 768px) {
+  .hero-profile-wrap {
+    width: clamp(200px, 60vw, 280px);
+    height: clamp(240px, 72vw, 340px);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(10px); opacity: 1; }
+}
+
+/* ============================================================
+   섹션 공통 — Fade-in (IntersectionObserver)
+   ============================================================ */
+.fade-section {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 섹션 레이블 공통 스타일 */
+.section-label {
+  font-family: var(--font-ko);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+}
+
+/* 섹션 제목 공통 */
+.section-title {
+  font-family: var(--font-ko);
+  font-weight: 700;
+  color: var(--color-navy);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.3;
+}
+
+/* ============================================================
+   About 섹션
+   ============================================================ */
+
+/* About 좌측 — 클리핑 컨테이너 */
+.about-left-clip {
+  overflow: hidden;
+  /* 높이는 script.js의 syncAboutClipHeight()가 런타임에 계산해서 주입 */
+}
+
+/* 사진 14장(원본7 + 복제7)을 세로로 쌓은 트랙
+   트랙 전체 높이의 50% 위로 이동 → 복제본이 원본 자리를 채워 seamless 루프 */
+.about-photo-track {
+  display: flex;
+  flex-direction: column;
+  animation: photoMarqueeUp 28s linear infinite;
+}
+
+/* 각 사진 슬롯 */
+.about-photo-item {
+  flex-shrink: 0;
+  padding: 8px 0;
+}
+
+.about-photo-item img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+/* 트랙 -50% = 원본 7장 높이 → seamless */
+@keyframes photoMarqueeUp {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+/* 아바타 (hero about 아바타 placeholder 유지용) */
+.avatar-scroll-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-avatar {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 3px solid var(--color-gold);
+  background: linear-gradient(135deg, var(--color-navy) 0%, #1e3a6e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-en);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+  box-shadow: 0 8px 32px rgba(15, 33, 72, 0.15);
+}
+
+.edu-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.edu-item:last-child { border-bottom: none; }
+
+.edu-icon {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  background: rgba(15, 33, 72, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.lang-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+.lang-badge-ko {
+  background: var(--color-navy);
+  color: white;
+}
+.lang-badge-en {
+  background: var(--color-gold);
+  color: var(--color-navy);
+}
+
+/* ============================================================
+   Services 섹션
+   ============================================================ */
+.service-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-gold);
+  border-radius: 4px;
+  padding: 2rem 1.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 48px rgba(15, 33, 72, 0.10);
+}
+
+.service-icon-wrap {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+/* ============================================================
+   Experience 섹션 — 수치 카드
+   ============================================================ */
+.stat-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.stat-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.75rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-plus {
+  font-size: 2rem;
+}
+
+.stat-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--color-muted);
+}
+
+/* ============================================================
+   Event History 섹션 — 타임라인
+   ============================================================ */
+#event-list {
+  position: relative;
+  padding-left: 2rem;
+}
+
+#event-list::before {
+  content: '';
+  position: absolute;
+  left: 0.45rem;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 2px;
+  background: var(--color-border);
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 2.5rem 1.75rem;
+  cursor: pointer;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -0.55rem;
+  top: 0.35rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: white;
+  border: 2.5px solid var(--color-navy);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.timeline-item:hover .timeline-dot {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+}
+
+.timeline-host {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.03em;
+}
+
+.timeline-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+
+.timeline-item:hover .timeline-title {
+  color: var(--color-gold);
+}
+
+.timeline-title-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin-top: 0.2rem;
+}
+
+/* ============================================================
+   Event Modal
+   ============================================================ */
+#eventModal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: var(--color-overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#eventModal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-box {
+  background: var(--color-card);
+  border-radius: 6px;
+  max-width: 640px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.5rem;
+  position: relative;
+  transform: scale(0.93) translateY(12px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 32px 80px rgba(15, 33, 72, 0.25);
+}
+
+#eventModal.open .modal-box {
+  transform: scale(1) translateY(0);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-bg-alt);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--color-muted);
+  transition: background 0.2s, color 0.2s;
+}
+.modal-close-btn:hover {
+  background: var(--color-navy);
+  color: white;
+}
+
+.modal-role-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+.modal-role-dot {
+  width: 6px;
+  height: 6px;
+  min-width: 6px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  margin-top: 0.55rem;
+}
+
+/* ============================================================
+   Contact 섹션
+   ============================================================ */
+.contact-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  border-radius: 6px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contact-card:hover {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 24px rgba(201, 168, 76, 0.15);
+}
+
+.contact-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(201, 168, 76, 0.15);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   Back-to-Top 버튼
+   ============================================================ */
+#backToTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-navy);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(201, 168, 76, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background 0.2s;
+  z-index: 50;
+}
+
+#backToTop.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#backToTop:hover {
+  background: var(--color-gold-dark);
+}
+
+/* ============================================================
+   반응형 보조
+   ============================================================ */
+@media (max-width: 640px) {
+  .profile-avatar {
+    width: 160px;
+    height: 160px;
+    font-size: 1.8rem;
+  }
+
+  .modal-box {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.825rem;
+  }
+}
