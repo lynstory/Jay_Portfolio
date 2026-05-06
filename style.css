@@ -333,12 +333,12 @@ body {
   /* 높이는 script.js의 syncAboutClipHeight()가 런타임에 계산해서 주입 */
 }
 
-/* 사진 14장(원본7 + 복제7)을 세로로 쌓은 트랙
+/* 사진 18장(원본9 + 복제9)을 세로로 쌓은 트랙
    트랙 전체 높이의 50% 위로 이동 → 복제본이 원본 자리를 채워 seamless 루프 */
 .about-photo-track {
   display: flex;
   flex-direction: column;
-  animation: photoMarqueeUp 28s linear infinite;
+  animation: photoMarqueeUp 36s linear infinite;
 }
 
 /* 각 사진 슬롯 */
