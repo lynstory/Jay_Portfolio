@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lynstory.github.io/Jay_Portfolio/sitemap.xml
