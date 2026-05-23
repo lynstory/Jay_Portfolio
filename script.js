@@ -84,6 +84,9 @@ function openModal(eventId) {
   if (!event) return;
 
   /* 모달 내용 채우기 */
+  const modalImg = $('#modalImage');
+  modalImg.src = event.thumbnail || '';
+  modalImg.alt = event.titleKo;
   $('#modalHostBadge').textContent = event.hostLabel;
   $('#modalTitle').textContent = event.titleKo;
   $('#modalTitleEn').textContent = event.titleEn;
