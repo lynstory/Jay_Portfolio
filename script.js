@@ -4,6 +4,7 @@
 const EVENTS = [
   {
     id: 1,
+    thumbnail: 'images/experience/mainevents/1.jpg',
     titleKo: '2026 PEMNA 고위급 총회',
     titleEn: 'PEMNA High-level Plenary Conference',
     host: '기획예산처',
@@ -16,6 +17,7 @@ const EVENTS = [
   },
   {
     id: 2,
+    thumbnail: 'images/experience/mainevents/2.jpg',
     titleKo: '2025 APEC SME 장관회의',
     titleEn: 'APEC SME Ministerial Meeting',
     host: '중소벤처기업부',
@@ -28,6 +30,7 @@ const EVENTS = [
   },
   {
     id: 3,
+    thumbnail: 'images/experience/mainevents/3.jpg',
     titleKo: '2025 KSP 성과공유 컨퍼런스',
     titleEn: 'KSP Dissemination Conference',
     host: '기획재정부',
@@ -40,6 +43,7 @@ const EVENTS = [
   },
   {
     id: 4,
+    thumbnail: 'images/experience/mainevents/4.jpg',
     titleKo: '2025 국제한반도포럼',
     titleEn: 'Global Korea Forum',
     host: '통일부',
@@ -52,6 +56,7 @@ const EVENTS = [
   },
   {
     id: 5,
+    thumbnail: 'images/experience/mainevents/5.jpg',
     titleKo: '2024 식량원조협약 출항기념식',
     titleEn: 'The Departure Ceremony for Rice Assistance through the Food Assistance Convention',
     host: '농림축산식품부',
@@ -106,6 +111,46 @@ function closeModal() {
   const modal = $('#eventModal');
   modal.classList.remove('open');
   document.body.style.overflow = '';
+}
+
+/* ============================================================
+   주요 행사 사례 — 카드 6개 렌더링
+   ============================================================ */
+function renderFeaturedCards() {
+  const container = $('#featured-events-container');
+  if (!container) return;
+
+  /* 이미지 카드 5개 HTML */
+  const imageCardsHTML = EVENTS.map((event) => `
+    <div class="event-card fade-section" data-event-id="${event.id}" role="button" tabindex="0" aria-label="${event.titleKo} 상세 보기">
+      <img src="${event.thumbnail}" alt="${event.titleKo}" loading="lazy" />
+      <div class="event-card-overlay">
+        <p class="event-card-label">${event.hostLabel}</p>
+        <p class="event-card-title">${event.titleKo}</p>
+      </div>
+    </div>
+  `).join('');
+
+  /* 텍스트 카드 1개 (6번째) HTML */
+  const textCardHTML = `
+    <div class="event-card event-card-text fade-section" id="view-all-card" role="button" tabindex="0" aria-label="전체 행사 목록 보기">
+      <p class="event-card-all-label">전체보기 클릭</p>
+      <p class="event-card-all-number">150<span class="event-card-all-plus">+</span></p>
+      <p class="event-card-all-sub">EVENTS HOSTED</p>
+    </div>
+  `;
+
+  container.innerHTML = imageCardsHTML + textCardHTML;
+
+  /* 이미지 카드 클릭 이벤트 (4단계에서 모달 연결) */
+  container.querySelectorAll('.event-card[data-event-id]').forEach((card) => {
+    card.addEventListener('click', () => {
+      openModal(Number(card.dataset.eventId));
+    });
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') openModal(Number(card.dataset.eventId));
+    });
+  });
 }
 
 /* ============================================================
@@ -245,7 +290,8 @@ function syncAboutClipHeight() {
    초기화 진입점
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
-  initFadeIn();         /* IntersectionObserver 등록 */
+  renderFeaturedCards(); /* 주요 행사 사례 카드 생성 후 */
+  initFadeIn();          /* IntersectionObserver 등록 (카드 포함) */
   initNavScroll();
   initHamburger();
   initSmoothScroll();
