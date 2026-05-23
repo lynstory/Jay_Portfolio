@@ -109,32 +109,6 @@ function closeModal() {
 }
 
 /* ============================================================
-   이벤트 카드 동적 생성
-   ============================================================ */
-function renderEventCards() {
-  const container = $('#event-list');
-  if (!container) return;
-
-  container.innerHTML = EVENTS.map((event) => `
-    <div class="timeline-item fade-section" data-event-id="${event.id}">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <p class="timeline-host">${event.hostLabel}</p>
-        <h3 class="timeline-title">${event.titleKo}</h3>
-        <p class="timeline-title-en">${event.titleEn}</p>
-      </div>
-    </div>
-  `).join('');
-
-  /* 타임라인 항목 클릭 이벤트 등록 */
-  $$('.timeline-item').forEach((item) => {
-    item.addEventListener('click', () => {
-      openModal(Number(item.dataset.eventId));
-    });
-  });
-}
-
-/* ============================================================
    네비게이션 스크롤 효과 + Scroll Spy
    ============================================================ */
 function initNavScroll() {
@@ -271,8 +245,7 @@ function syncAboutClipHeight() {
    초기화 진입점
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
-  renderEventCards();   /* 이벤트 카드 생성 후 */
-  initFadeIn();         /* IntersectionObserver 등록 (카드 포함) */
+  initFadeIn();         /* IntersectionObserver 등록 */
   initNavScroll();
   initHamburger();
   initSmoothScroll();

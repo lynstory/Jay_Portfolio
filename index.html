@@ -311,56 +311,44 @@
 
 
 <!-- ============================================================
-     Event History
+     Experience
      ============================================================ -->
 <section id="experience" style="background: var(--color-bg-alt);" class="py-24 px-6">
   <div class="max-w-6xl mx-auto">
 
-    <div class="grid md:grid-cols-2 gap-16 items-end">
-
-      <!-- 좌측: 타임라인 -->
-      <div>
-        <div class="mb-14 fade-section">
-          <h2 class="section-title" style="text-align:left;">대표 행사</h2>
-          <div style="width:3rem; height:3px; background:var(--color-gold); margin-top:0.75rem;"></div>
-        </div>
-        <div id="event-list"></div>
+    <!-- ① 주요 행사 사례 -->
+    <div class="mb-20 fade-section">
+      <div class="text-center mb-10">
+        <p class="section-label mb-3">주요 행사 사례</p>
+        <div style="width:3rem; height:2px; background:var(--color-gold); margin:0 auto;"></div>
       </div>
-
-      <!-- 우측: 수치 카드 + 동영상 -->
-      <div class="fade-section flex flex-col gap-6 md:-mt-16">
-
-        <!-- 수치 카드 2×2 그리드 -->
-        <div class="grid grid-cols-2 gap-4">
-          <div class="stat-card">
-            <p class="stat-number">150<span class="stat-plus">+</span></p>
-            <p class="stat-label">EVENTS HOSTED</p>
-          </div>
-          <div class="stat-card">
-            <p class="stat-number">10<span class="stat-plus">+</span></p>
-            <p class="stat-label">EVENT FORMATS</p>
-          </div>
-          <div class="stat-card">
-            <p class="stat-number">20<span class="stat-plus">+</span></p>
-            <p class="stat-label">INDUSTRIES COVERED</p>
-          </div>
-          <div class="stat-card">
-            <p class="stat-number">2</p>
-            <p class="stat-label">LANGUAGES</p>
-          </div>
-        </div>
-
-        <video
-          src="video/Video_Experience.mp4"
-          autoplay
-          muted
-          loop
-          playsinline
-          style="width:100%; border-radius:8px; object-fit:cover;"
-        ></video>
+      <div id="featured-events-container">
+        <!-- 3~5단계에서 카드 6개 + 모달 연결 -->
       </div>
-
     </div>
+
+    <!-- ② 진행 영상 -->
+    <div class="mb-20 fade-section">
+      <div class="text-center mb-10">
+        <p class="section-label mb-3">진행 영상</p>
+        <div style="width:3rem; height:2px; background:var(--color-gold); margin:0 auto;"></div>
+      </div>
+      <div id="video-container">
+        <!-- 6단계에서 영상 2개 배치 -->
+      </div>
+    </div>
+
+    <!-- ③ 함께한 파트너 -->
+    <div class="fade-section">
+      <div class="text-center mb-10">
+        <p class="section-label mb-3">함께한 파트너</p>
+        <div style="width:3rem; height:2px; background:var(--color-gold); margin:0 auto;"></div>
+      </div>
+      <div id="partners-container">
+        <!-- 7단계에서 무한 슬라이드 -->
+      </div>
+    </div>
+
   </div>
 </section>
 
