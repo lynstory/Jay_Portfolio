@@ -459,6 +459,70 @@ body {
 }
 
 /* ============================================================
+   Values 섹션 — 통계 카드 (1행)
+   ============================================================ */
+.values-stat-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-gold);
+  border-radius: 4px;
+  padding: 1.25rem 0.75rem;
+  text-align: center;
+}
+
+.values-stat-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.values-stat-plus {
+  font-size: 1.6rem;
+}
+
+.values-stat-label {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--color-muted);
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   Values 섹션 — 축소된 가치 카드 (2행)
+   ============================================================ */
+.value-card-sm {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-gold);
+  border-radius: 4px;
+  padding: 1.25rem 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.value-card-sm:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(15, 33, 72, 0.08);
+}
+
+.value-icon-wrap-sm {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+/* ============================================================
    Experience 섹션 — 수치 카드
    ============================================================ */
 .stat-card {
@@ -713,6 +777,23 @@ body {
    반응형 보조
    ============================================================ */
 @media (max-width: 640px) {
+  .values-stat-card {
+    padding: 1rem 0.5rem;
+  }
+
+  .values-stat-number {
+    font-size: 1.75rem;
+  }
+
+  .values-stat-plus {
+    font-size: 1.25rem;
+  }
+
+  .values-stat-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+
   .profile-avatar {
     width: 160px;
     height: 160px;
