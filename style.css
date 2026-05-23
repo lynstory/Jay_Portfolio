@@ -497,7 +497,6 @@ body {
 .value-card-sm {
   background: var(--color-card);
   border: 1px solid var(--color-border);
-  border-top: 3px solid var(--color-gold);
   border-radius: 4px;
   padding: 1.25rem 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;

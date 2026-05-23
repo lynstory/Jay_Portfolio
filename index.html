@@ -250,54 +250,59 @@
       <h2 class="section-title">핵심 가치</h2>
     </div>
 
-    <!-- 1행: 통계 수치 카드 -->
-    <div class="grid grid-cols-3 gap-4 mb-6">
+    <!-- 모바일: 가치→수치 순서 / PC: 수치→가치 순서 -->
+    <div class="flex flex-col gap-6">
 
-      <div class="values-stat-card fade-section">
-        <p class="values-stat-number">150<span class="values-stat-plus">+</span></p>
-        <p class="values-stat-label">EVENTS HOSTED</p>
-      </div>
+      <!-- 통계 수치 카드 (PC에서 1행 3열, 모바일에서 2행 1열 강조) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 order-2 md:order-1">
 
-      <div class="values-stat-card fade-section">
-        <p class="values-stat-number">20<span class="values-stat-plus">+</span></p>
-        <p class="values-stat-label">INDUSTRIES COVERED</p>
-      </div>
-
-      <div class="values-stat-card fade-section">
-        <p class="values-stat-number">10<span class="values-stat-plus">+</span></p>
-        <p class="values-stat-label">EVENT FORMATS</p>
-      </div>
-
-    </div>
-
-    <!-- 2행: 핵심 가치 카드 (축소) -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-
-      <!-- 카드 1: 안정적인 진행 -->
-      <div class="value-card-sm fade-section">
-        <div class="value-icon-wrap-sm">
-          <img src="images/Logo/Reliability.png" alt="Reliability" style="width:48px; height:48px; object-fit:contain;" />
+        <div class="values-stat-card fade-section">
+          <p class="values-stat-number">150<span class="values-stat-plus">+</span></p>
+          <p class="values-stat-label">EVENTS HOSTED</p>
         </div>
-        <h3 style="font-weight:700; font-size:0.92rem; color:var(--color-navy); margin-bottom:0.25rem;">안정적인 진행</h3>
-        <p style="font-family:var(--font-en); font-style:italic; font-size:0.78rem; color:var(--color-gold);">Reliability</p>
+
+        <div class="values-stat-card fade-section">
+          <p class="values-stat-number">20<span class="values-stat-plus">+</span></p>
+          <p class="values-stat-label">INDUSTRIES COVERED</p>
+        </div>
+
+        <div class="values-stat-card fade-section">
+          <p class="values-stat-number">10<span class="values-stat-plus">+</span></p>
+          <p class="values-stat-label">EVENT FORMATS</p>
+        </div>
+
       </div>
 
-      <!-- 카드 2: 유연한 현장 대응 -->
-      <div class="value-card-sm fade-section">
-        <div class="value-icon-wrap-sm">
-          <img src="images/Logo/Adaptability.png" alt="Adaptability" style="width:48px; height:48px; object-fit:contain;" />
-        </div>
-        <h3 style="font-weight:700; font-size:0.92rem; color:var(--color-navy); margin-bottom:0.25rem;">유연한 현장 대응</h3>
-        <p style="font-family:var(--font-en); font-style:italic; font-size:0.78rem; color:var(--color-gold);">Adaptability</p>
-      </div>
+      <!-- 핵심 가치 카드 (PC에서 2행, 모바일에서 1행) -->
+      <div class="grid grid-cols-3 gap-4 order-1 md:order-2">
 
-      <!-- 카드 3: 무대를 이끄는 존재감 -->
-      <div class="value-card-sm fade-section sm:col-span-2 lg:col-span-1">
-        <div class="value-icon-wrap-sm">
-          <img src="images/Logo/Presence.png" alt="Presence" style="width:48px; height:48px; object-fit:contain;" />
+        <!-- 카드 1: 안정적인 진행 -->
+        <div class="value-card-sm fade-section">
+          <div class="value-icon-wrap-sm">
+            <img src="images/Logo/Reliability.png" alt="Reliability" style="width:48px; height:48px; object-fit:contain;" />
+          </div>
+          <h3 style="font-weight:700; font-size:0.92rem; color:var(--color-navy); margin-bottom:0.25rem;">안정적인 진행</h3>
+          <p style="font-family:var(--font-en); font-style:italic; font-size:0.78rem; color:var(--color-gold);">Reliability</p>
         </div>
-        <h3 style="font-weight:700; font-size:0.92rem; color:var(--color-navy); margin-bottom:0.25rem;">무대를 이끄는 존재감</h3>
-        <p style="font-family:var(--font-en); font-style:italic; font-size:0.78rem; color:var(--color-gold);">Presence</p>
+
+        <!-- 카드 2: 유연한 현장 대응 -->
+        <div class="value-card-sm fade-section">
+          <div class="value-icon-wrap-sm">
+            <img src="images/Logo/Adaptability.png" alt="Adaptability" style="width:48px; height:48px; object-fit:contain;" />
+          </div>
+          <h3 style="font-weight:700; font-size:0.92rem; color:var(--color-navy); margin-bottom:0.25rem;">유연한 현장 대응</h3>
+          <p style="font-family:var(--font-en); font-style:italic; font-size:0.78rem; color:var(--color-gold);">Adaptability</p>
+        </div>
+
+        <!-- 카드 3: 무대를 이끄는 존재감 -->
+        <div class="value-card-sm fade-section">
+          <div class="value-icon-wrap-sm">
+            <img src="images/Logo/Presence.png" alt="Presence" style="width:48px; height:48px; object-fit:contain;" />
+          </div>
+          <h3 style="font-weight:700; font-size:0.92rem; color:var(--color-navy); margin-bottom:0.25rem;">무대를 이끄는 존재감</h3>
+          <p style="font-family:var(--font-en); font-style:italic; font-size:0.78rem; color:var(--color-gold);">Presence</p>
+        </div>
+
       </div>
 
     </div>
