@@ -309,10 +309,39 @@ function syncAboutClipHeight() {
 }
 
 /* ============================================================
+   진행 영상 재생 버튼
+   ============================================================ */
+function initVideoPlayers() {
+  $$('.video-wrap').forEach((wrap) => {
+    const video = wrap.querySelector('video');
+    if (!video) return;
+
+    /* 래퍼 또는 버튼 클릭 시 재생/일시정지 토글 */
+    wrap.addEventListener('click', (e) => {
+      /* controls 영역 클릭은 브라우저가 처리하므로 직접 건드리지 않음 */
+      if (video.paused) {
+        video.play();
+        wrap.classList.add('playing');
+      } else {
+        video.pause();
+        wrap.classList.remove('playing');
+      }
+    });
+
+    /* 영상이 끝나면 버튼 다시 표시 */
+    video.addEventListener('ended', () => wrap.classList.remove('playing'));
+    /* 외부(controls)에서 일시정지해도 버튼 복원 */
+    video.addEventListener('pause', () => wrap.classList.remove('playing'));
+    video.addEventListener('play', () => wrap.classList.add('playing'));
+  });
+}
+
+/* ============================================================
    초기화 진입점
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   renderFeaturedCards(); /* 주요 행사 사례 카드 생성 후 */
+  initVideoPlayers();    /* 영상 재생 버튼 초기화 */
   initFadeIn();          /* IntersectionObserver 등록 (카드 포함) */
   initNavScroll();
   initHamburger();

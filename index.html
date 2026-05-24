@@ -335,23 +335,35 @@
       </div>
       <div id="video-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- 좌: 한국어 진행 영상 -->
-        <video
-          src="images/experience/eventsvideo/1korean.mp4"
-          controls
-          muted
-          playsinline
-          preload="metadata"
-          style="width:100%; border-radius:8px; display:block;"
-        ></video>
+        <div class="video-wrap">
+          <video
+            src="images/experience/eventsvideo/1korean.mp4"
+            controls
+            muted
+            playsinline
+            preload="metadata"
+          ></video>
+          <button class="video-play-btn" aria-label="영상 재생">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 5.14v14l11-7-11-7z"/>
+            </svg>
+          </button>
+        </div>
         <!-- 우: 영어 진행 영상 -->
-        <video
-          src="images/experience/eventsvideo/2english.mp4"
-          controls
-          muted
-          playsinline
-          preload="metadata"
-          style="width:100%; border-radius:8px; display:block;"
-        ></video>
+        <div class="video-wrap">
+          <video
+            src="images/experience/eventsvideo/2english.mp4"
+            controls
+            muted
+            playsinline
+            preload="metadata"
+          ></video>
+          <button class="video-play-btn" aria-label="영상 재생">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 5.14v14l11-7-11-7z"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
 

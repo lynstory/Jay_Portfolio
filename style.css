@@ -904,6 +904,57 @@ body {
 }
 
 /* ============================================================
+   진행 영상 — 재생 버튼 오버레이
+   ============================================================ */
+.video-wrap {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+  cursor: pointer;
+}
+
+.video-wrap video {
+  width: 100%;
+  display: block;
+}
+
+.video-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-navy);
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+  pointer-events: none;
+}
+
+.video-play-btn svg {
+  width: 28px;
+  height: 28px;
+  margin-left: 4px;
+}
+
+.video-wrap:hover .video-play-btn {
+  background: var(--color-gold);
+  color: #fff;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-wrap.playing .video-play-btn {
+  opacity: 0;
+}
+
+/* ============================================================
    All Events Modal (전체보기)
    ============================================================ */
 #allEventsModal {
