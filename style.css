@@ -15,6 +15,18 @@
   --font-ko: 'Noto Sans KR', sans-serif;
   --font-en: 'Cormorant Garamond', serif;
   --nav-height: 72px;
+
+  /* Hero 리뉴얼 색상 */
+  --navy-black: #010916;
+  --deep-navy: #040D1B;
+  --soft-navy: #0C1A2A;
+  --deep-teal: #173546;
+  --teal-glow: #23404F;
+  --champagne-gold: #BF9B70;
+  --light-gold: #DCB684;
+  --dark-gold: #866B55;
+  --ivory: #F6E3CA;
+  --soft-white: #DDDAD5;
 }
 
 /* ============================================================
@@ -59,9 +71,9 @@ body {
 
 .nav-logo {
   font-family: var(--font-en);
-  font-style: italic;
+  font-style: normal;
   font-weight: 600;
-  color: var(--color-gold);
+  color: var(--champagne-gold);
   font-size: 1.6rem;
   letter-spacing: 0.05em;
   text-decoration: none;
@@ -82,7 +94,7 @@ body {
 }
 
 #navbar.scrolled .nav-link { color: var(--color-text); }
-#navbar:not(.scrolled) .nav-link { color: rgba(255, 255, 255, 0.85); }
+#navbar:not(.scrolled) .nav-link { color: rgba(246, 227, 202, 0.85); }
 
 .nav-link::after {
   content: '';
@@ -91,14 +103,14 @@ body {
   left: 0;
   width: 0;
   height: 1.5px;
-  background: var(--color-gold);
+  background: var(--champagne-gold);
   transition: width 0.3s ease;
 }
 
-.nav-link:hover { color: var(--color-gold); }
+.nav-link:hover { color: var(--champagne-gold); }
 .nav-link:hover::after,
 .nav-link.active::after { width: 100%; }
-.nav-link.active { color: var(--color-gold); }
+.nav-link.active { color: var(--champagne-gold); }
 
 /* 모바일 메뉴 */
 #mobile-menu {
@@ -134,24 +146,21 @@ body {
    Hero 섹션
    ============================================================ */
 #hero {
-  background: linear-gradient(150deg, #0a1730 0%, var(--color-navy) 50%, #162348 100%);
+  background:
+    radial-gradient(circle at 72% 50%, rgba(35, 64, 79, 0.45), transparent 32%),
+    linear-gradient(135deg, #010916 0%, #040D1B 48%, #0C1A2A 100%);
   position: relative;
   overflow: hidden;
 }
 
-/* 배경 기하학 패턴 — 얇은 diagonal gold 라인 */
+/* 배경 실크 웨이브 텍스처 */
 #hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 80px,
-      rgba(201, 168, 76, 0.04) 80px,
-      rgba(201, 168, 76, 0.04) 81px
-    );
+    radial-gradient(ellipse at 20% 80%, rgba(23, 53, 70, 0.3), transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(23, 53, 70, 0.15), transparent 40%);
   pointer-events: none;
 }
 
@@ -160,14 +169,14 @@ body {
   font-size: 0.75rem;
   font-weight: 300;
   letter-spacing: 0.35em;
-  color: var(--color-gold);
+  color: var(--champagne-gold);
   text-transform: uppercase;
 }
 
 .hero-name-ko {
   font-family: var(--font-ko);
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--ivory);
   letter-spacing: 0.18em;
   font-size: clamp(2.2rem, 6vw, 4rem);
   line-height: 1.15;
@@ -177,7 +186,7 @@ body {
   font-family: var(--font-en);
   font-style: italic;
   font-weight: 600;
-  color: var(--color-gold);
+  color: var(--champagne-gold);
   font-size: clamp(3.8rem, 11vw, 7.5rem);
   line-height: 1;
   letter-spacing: 0.03em;
@@ -186,7 +195,7 @@ body {
 .hero-tagline-ko {
   font-family: var(--font-ko);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(246, 227, 202, 0.8);
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   letter-spacing: 0.05em;
 }
@@ -194,15 +203,15 @@ body {
 .hero-tagline-en {
   font-family: var(--font-en);
   font-style: italic;
-  color: rgba(201, 168, 76, 0.7);
+  color: rgba(191, 155, 112, 0.75);
   font-size: clamp(0.9rem, 2vw, 1.1rem);
   letter-spacing: 0.03em;
 }
 
 /* CTA 버튼 */
 .btn-primary {
-  background: var(--color-gold);
-  color: var(--color-navy);
+  background: linear-gradient(135deg, var(--light-gold), var(--champagne-gold));
+  color: var(--navy-black);
   font-family: var(--font-ko);
   font-weight: 700;
   font-size: 0.95rem;
@@ -211,24 +220,24 @@ body {
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  transition: opacity 0.2s, transform 0.2s;
   text-decoration: none;
   display: inline-block;
 }
 .btn-primary:hover {
-  background: var(--color-gold-dark);
+  opacity: 0.88;
   transform: translateY(-2px);
 }
 
 .btn-outline {
   background: transparent;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--ivory);
   font-family: var(--font-ko);
   font-weight: 500;
   font-size: 0.95rem;
   letter-spacing: 0.06em;
   padding: 1rem 2.5rem;
-  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border: 1.5px solid var(--champagne-gold);
   border-radius: 3px;
   cursor: pointer;
   transition: border-color 0.2s, color 0.2s, transform 0.2s;
@@ -236,8 +245,8 @@ body {
   display: inline-block;
 }
 .btn-outline:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
+  border-color: var(--light-gold);
+  color: var(--light-gold);
   transform: translateY(-2px);
 }
 
@@ -253,17 +262,15 @@ body {
   height: clamp(320px, 46vw, 520px);
 }
 
-/* 배경 gold 원 — 장식 */
+/* 이중 테두리의 외부 링 — 골드 */
 .hero-profile-wrap::before {
   content: '';
   position: absolute;
-  bottom: -16px;
-  right: -16px;
-  width: 100%;
-  height: 100%;
-  border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
-  border: 2px solid rgba(201, 168, 76, 0.25);
+  inset: -14px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(191, 155, 112, 0.6);
   z-index: 0;
+  pointer-events: none;
 }
 
 .hero-profile-img {
@@ -273,9 +280,13 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
-  border: 3px solid rgba(201, 168, 76, 0.4);
-  box-shadow: 0 24px 64px rgba(15, 33, 72, 0.4);
+  border-radius: 50%;
+  border: 2px solid var(--champagne-gold);
+  box-shadow:
+    0 0 0 7px var(--deep-navy),
+    0 0 0 9px rgba(191, 155, 112, 0.5),
+    0 0 50px rgba(35, 64, 79, 0.55),
+    0 0 100px rgba(35, 64, 79, 0.3);
 }
 
 @media (max-width: 768px) {
