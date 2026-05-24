@@ -317,17 +317,22 @@ function initVideoPlayers() {
     const btn = wrap.querySelector('.video-play-btn');
     if (!video || !btn) return;
 
-    /* 재생 버튼 클릭 → 재생 시작, 이후 네이티브 controls에 위임 */
+    /* 커스텀 재생 버튼 클릭 → 네이티브 controls 활성화 후 재생 시작 */
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
+      video.controls = true;
       video.muted = false;
       video.play();
     });
 
-    /* 재생/일시정지/종료 상태에 따라 버튼 표시 제어 */
-    video.addEventListener('play',  () => wrap.classList.add('playing'));
-    video.addEventListener('pause', () => wrap.classList.remove('playing'));
-    video.addEventListener('ended', () => wrap.classList.remove('playing'));
+    /* 재생 시작: 커스텀 버튼 숨김 (이후 네이티브 controls에 위임) */
+    video.addEventListener('play', () => wrap.classList.add('playing'));
+
+    /* 재생 종료: controls 제거하고 커스텀 버튼 복귀 */
+    video.addEventListener('ended', () => {
+      wrap.classList.remove('playing');
+      video.controls = false;
+    });
   });
 }
 
