@@ -869,6 +869,66 @@ body {
 }
 
 /* ============================================================
+   함께한 파트너 — 수평 무한 슬라이드
+   ============================================================ */
+.partner-track-clip {
+  overflow: hidden;
+}
+
+/* 28개(원본14 + 복제14) 카드를 가로로 나열한 트랙
+   트랙 전체 너비의 50% 왼쪽으로 이동 → 복제본이 원본 자리를 채워 seamless 루프 */
+.partner-track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: partnerMarqueeLeft 42s linear infinite;
+}
+
+.partner-track-clip:hover .partner-track {
+  animation-play-state: paused;
+}
+
+.partner-card {
+  flex-shrink: 0;
+  width: 160px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.25rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.partner-card:hover {
+  box-shadow: 0 8px 24px rgba(15, 33, 72, 0.10);
+  transform: translateY(-3px);
+}
+
+.partner-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+}
+
+.partner-card-name {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  text-align: center;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+@keyframes partnerMarqueeLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============================================================
    Back-to-Top 버튼
    ============================================================ */
 #backToTop {
@@ -1098,5 +1158,19 @@ body {
   .btn-outline {
     padding: 0.75rem 1.5rem;
     font-size: 0.825rem;
+  }
+
+  .partner-card {
+    width: 120px;
+    padding: 1rem 0.75rem 0.75rem;
+  }
+
+  .partner-card img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .partner-card-name {
+    font-size: 0.65rem;
   }
 }
