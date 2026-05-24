@@ -333,8 +333,25 @@
         <p class="section-label mb-3">진행 영상</p>
         <div style="width:3rem; height:2px; background:var(--color-gold); margin:0 auto;"></div>
       </div>
-      <div id="video-container">
-        <!-- 6단계에서 영상 2개 배치 -->
+      <div id="video-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- 좌: 한국어 진행 영상 -->
+        <video
+          src="images/experience/eventsvideo/1korean.mp4"
+          controls
+          muted
+          playsinline
+          preload="metadata"
+          style="width:100%; border-radius:8px; display:block;"
+        ></video>
+        <!-- 우: 영어 진행 영상 -->
+        <video
+          src="images/experience/eventsvideo/2english.mp4"
+          controls
+          muted
+          playsinline
+          preload="metadata"
+          style="width:100%; border-radius:8px; display:block;"
+        ></video>
       </div>
     </div>
 
