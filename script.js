@@ -314,25 +314,19 @@ function syncAboutClipHeight() {
 function initVideoPlayers() {
   $$('.video-wrap').forEach((wrap) => {
     const video = wrap.querySelector('video');
-    if (!video) return;
+    const btn = wrap.querySelector('.video-play-btn');
+    if (!video || !btn) return;
 
-    /* 래퍼 또는 버튼 클릭 시 재생/일시정지 토글 */
-    wrap.addEventListener('click', (e) => {
-      /* controls 영역 클릭은 브라우저가 처리하므로 직접 건드리지 않음 */
-      if (video.paused) {
-        video.play();
-        wrap.classList.add('playing');
-      } else {
-        video.pause();
-        wrap.classList.remove('playing');
-      }
+    /* 재생 버튼 클릭 → 재생 시작, 이후 네이티브 controls에 위임 */
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      video.play();
     });
 
-    /* 영상이 끝나면 버튼 다시 표시 */
-    video.addEventListener('ended', () => wrap.classList.remove('playing'));
-    /* 외부(controls)에서 일시정지해도 버튼 복원 */
+    /* 재생/일시정지/종료 상태에 따라 버튼 표시 제어 */
+    video.addEventListener('play',  () => wrap.classList.add('playing'));
     video.addEventListener('pause', () => wrap.classList.remove('playing'));
-    video.addEventListener('play', () => wrap.classList.add('playing'));
+    video.addEventListener('ended', () => wrap.classList.remove('playing'));
   });
 }
 

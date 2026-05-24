@@ -935,7 +935,7 @@ body {
   justify-content: center;
   color: var(--color-navy);
   transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
-  pointer-events: none;
+  z-index: 2;
 }
 
 .video-play-btn svg {
