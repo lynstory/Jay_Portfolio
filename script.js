@@ -320,6 +320,7 @@ function initVideoPlayers() {
     /* 재생 버튼 클릭 → 재생 시작, 이후 네이티브 controls에 위임 */
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
+      video.muted = false;
       video.play();
     });
 
