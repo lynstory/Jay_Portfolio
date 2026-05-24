@@ -116,6 +116,16 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
+function openAllEventsModal() {
+  $('#allEventsModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAllEventsModal() {
+  $('#allEventsModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 /* ============================================================
    주요 행사 사례 — 카드 6개 렌더링
    ============================================================ */
@@ -145,7 +155,7 @@ function renderFeaturedCards() {
 
   container.innerHTML = imageCardsHTML + textCardHTML;
 
-  /* 이미지 카드 클릭 이벤트 (4단계에서 모달 연결) */
+  /* 이미지 카드 클릭 이벤트 */
   container.querySelectorAll('.event-card[data-event-id]').forEach((card) => {
     card.addEventListener('click', () => {
       openModal(Number(card.dataset.eventId));
@@ -154,6 +164,15 @@ function renderFeaturedCards() {
       if (e.key === 'Enter' || e.key === ' ') openModal(Number(card.dataset.eventId));
     });
   });
+
+  /* 전체보기 카드 클릭 이벤트 */
+  const viewAllCard = $('#view-all-card');
+  if (viewAllCard) {
+    viewAllCard.addEventListener('click', openAllEventsModal);
+    viewAllCard.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') openAllEventsModal();
+    });
+  }
 }
 
 /* ============================================================
@@ -302,12 +321,23 @@ document.addEventListener('DOMContentLoaded', () => {
   syncAboutClipHeight();                          /* 좌측 클립 높이 동기화 */
   window.addEventListener('resize', syncAboutClipHeight); /* 반응형 대응 */
 
-  /* 모달 닫기 이벤트 */
+  /* 이미지 모달 닫기 이벤트 */
   $('#modal-close-btn')?.addEventListener('click', closeModal);
   $('#eventModal')?.addEventListener('click', (e) => {
     if (e.target === e.currentTarget) closeModal();
   });
+
+  /* 전체보기 모달 닫기 이벤트 */
+  $('#all-events-close-btn')?.addEventListener('click', closeAllEventsModal);
+  $('#allEventsModal')?.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeAllEventsModal();
+  });
+
+  /* ESC — 두 모달 모두 닫기 */
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') {
+      closeModal();
+      closeAllEventsModal();
+    }
   });
 });
