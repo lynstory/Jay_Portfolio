@@ -253,24 +253,26 @@
     <!-- 모바일: 가치→수치 순서 / PC: 수치→가치 순서 -->
     <div class="flex flex-col gap-6">
 
-      <!-- 통계 수치 카드 (PC에서 1행 3열, 모바일에서 2행 1열 강조) -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 order-2 md:order-1">
+      <!-- 통계 수치 카드 (다크 네이비 패널 1개로 통합) -->
+      <div class="values-stat-bar fade-section order-2 md:order-1">
+        <div class="grid grid-cols-3">
 
-        <div class="values-stat-card fade-section">
-          <p class="values-stat-number">150<span class="values-stat-plus">+</span></p>
-          <p class="values-stat-label">EVENTS HOSTED</p>
+          <div class="values-stat-card">
+            <p class="values-stat-number">150<span class="values-stat-plus">+</span></p>
+            <p class="values-stat-label">EVENTS HOSTED</p>
+          </div>
+
+          <div class="values-stat-card values-stat-card--divider">
+            <p class="values-stat-number">20<span class="values-stat-plus">+</span></p>
+            <p class="values-stat-label">INDUSTRIES COVERED</p>
+          </div>
+
+          <div class="values-stat-card values-stat-card--divider">
+            <p class="values-stat-number">10<span class="values-stat-plus">+</span></p>
+            <p class="values-stat-label">EVENT FORMATS</p>
+          </div>
+
         </div>
-
-        <div class="values-stat-card fade-section">
-          <p class="values-stat-number">20<span class="values-stat-plus">+</span></p>
-          <p class="values-stat-label">INDUSTRIES COVERED</p>
-        </div>
-
-        <div class="values-stat-card fade-section">
-          <p class="values-stat-number">10<span class="values-stat-plus">+</span></p>
-          <p class="values-stat-label">EVENT FORMATS</p>
-        </div>
-
       </div>
 
       <!-- 핵심 가치 카드 (PC에서 2행, 모바일에서 1행) -->
