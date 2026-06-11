@@ -333,7 +333,7 @@ body {
 /* 섹션 레이블 공통 스타일 */
 .section-label {
   font-family: var(--font-ko);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.3em;
   color: var(--color-gold);
@@ -516,7 +516,7 @@ body {
 }
 
 .values-stat-label {
-  font-size: 0.62rem;
+  font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   color: rgba(255, 255, 255, 0.65);
@@ -535,7 +535,7 @@ body {
 }
 
 .value-tags-label {
-  font-size: 0.62rem;
+  font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1222,7 +1222,7 @@ body {
   }
 
   .values-stat-label {
-    font-size: 0.52rem;
+    font-size: 0.62rem;
     letter-spacing: 0.03em;
   }
 
