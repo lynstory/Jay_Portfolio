@@ -518,9 +518,50 @@ body {
 .values-stat-label {
   font-size: 0.62rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
   color: rgba(255, 255, 255, 0.65);
+}
+
+/* ============================================================
+   Values 섹션 — 산업 분야 · 행사 형식 태그 줄 (SEO 정적 텍스트)
+   ============================================================ */
+.value-tags {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.value-tags + .value-tags {
+  margin-top: 1.5rem;
+}
+
+.value-tags-label {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.9rem;
+}
+
+.value-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.value-tag-list li {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--color-navy);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  line-height: 1.6;
 }
 
 /* ============================================================
@@ -1172,7 +1213,7 @@ body {
 
   .values-stat-label {
     font-size: 0.52rem;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.03em;
   }
 
   .profile-avatar {
