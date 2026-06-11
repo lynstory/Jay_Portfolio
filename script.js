@@ -268,9 +268,9 @@ function initFadeIn() {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
 
-          /* 모바일: 이미지 카드 진입 시 줌 힌트 1회 재생 */
+          /* 모바일: 이미지 카드 진입 시 순차 줌 루프 시작 */
           if (noHover && entry.target.matches('.event-card[data-event-id]')) {
-            setTimeout(() => entry.target.classList.add('tap-hint'), 500);
+            entry.target.parentElement.classList.add('tap-hint-loop');
           }
 
           observer.unobserve(entry.target);

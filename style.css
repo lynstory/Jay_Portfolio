@@ -642,15 +642,25 @@ body {
   pointer-events: none;
 }
 
-/* 모바일 진입 시 1회 줌 힌트 — hover 없는 기기에서 JS가 tap-hint 클래스 부여 */
-@keyframes tapHintZoom {
+/* 모바일: 첫 카드부터 순차 줌 루프 — JS가 컨테이너에 tap-hint-loop 부여 */
+@keyframes tapHintZoomLoop {
   0%   { transform: scale(1); }
-  45%  { transform: scale(1.06); }
-  100% { transform: scale(1); }
+  10%  { transform: scale(1.06); }
+  20%  { transform: scale(1); }
+  100% { transform: scale(1); } /* 나머지 구간 정지 → 카드별 delay로 순차 연출 */
 }
 
-.event-card.tap-hint img {
-  animation: tapHintZoom 1.4s ease-in-out;
+.tap-hint-loop .event-card img {
+  animation: tapHintZoomLoop 6s ease-in-out infinite;
+}
+.tap-hint-loop .event-card:nth-child(1) img { animation-delay: 0s; }
+.tap-hint-loop .event-card:nth-child(2) img { animation-delay: 0.45s; }
+.tap-hint-loop .event-card:nth-child(3) img { animation-delay: 0.9s; }
+.tap-hint-loop .event-card:nth-child(4) img { animation-delay: 1.35s; }
+.tap-hint-loop .event-card:nth-child(5) img { animation-delay: 1.8s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tap-hint-loop .event-card img { animation: none; }
 }
 
 /* 6번째: 텍스트 카드 */
