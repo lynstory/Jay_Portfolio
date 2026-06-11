@@ -173,6 +173,13 @@ body {
   text-transform: uppercase;
 }
 
+/* 역할 레이블 모바일 줄바꿈: PC는 가운뎃점, 모바일은 줄바꿈 */
+.role-break-mobile { display: none; }
+@media (max-width: 767px) {
+  .role-sep { display: none; }
+  .role-break-mobile { display: inline; }
+}
+
 .hero-name-ko {
   font-family: var(--font-ko);
   font-weight: 700;
@@ -294,11 +301,19 @@ body {
     width: clamp(200px, 60vw, 280px);
     height: clamp(240px, 72vw, 340px);
   }
+  /* 모바일에서 SCROLL 인디케이터와 프로필 사진 겹침 방지: 하단 여백 확보 */
+  #hero {
+    padding-bottom: 120px;
+  }
+  /* 모바일에서 인디케이터를 화면 맨 아래쪽으로 고정 (애니메이션 이동 시에도 사진과 분리) */
+  .scroll-indicator {
+    bottom: 1rem;
+  }
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); opacity: 0.6; }
-  50% { transform: translateY(10px); opacity: 1; }
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+  50% { transform: translateX(-50%) translateY(10px); opacity: 1; }
 }
 
 /* ============================================================
@@ -344,12 +359,12 @@ body {
   /* 높이는 script.js의 syncAboutClipHeight()가 런타임에 계산해서 주입 */
 }
 
-/* 사진 18장(원본9 + 복제9)을 세로로 쌓은 트랙
+/* 사진 12장(원본6 + 복제6)을 세로로 쌓은 트랙
    트랙 전체 높이의 50% 위로 이동 → 복제본이 원본 자리를 채워 seamless 루프 */
 .about-photo-track {
   display: flex;
   flex-direction: column;
-  animation: photoMarqueeUp 36s linear infinite;
+  animation: photoMarqueeUp 24s linear infinite;
 }
 
 /* 각 사진 슬롯 */
