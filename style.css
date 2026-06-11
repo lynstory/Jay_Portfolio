@@ -654,10 +654,10 @@ body {
   animation: tapHintZoomLoop 6s ease-in-out infinite;
 }
 .tap-hint-loop .event-card:nth-child(1) img { animation-delay: 0s; }
-.tap-hint-loop .event-card:nth-child(2) img { animation-delay: 0.45s; }
-.tap-hint-loop .event-card:nth-child(3) img { animation-delay: 0.9s; }
-.tap-hint-loop .event-card:nth-child(4) img { animation-delay: 1.35s; }
-.tap-hint-loop .event-card:nth-child(5) img { animation-delay: 1.8s; }
+.tap-hint-loop .event-card:nth-child(2) img { animation-delay: 1.2s; }
+.tap-hint-loop .event-card:nth-child(3) img { animation-delay: 2.4s; }
+.tap-hint-loop .event-card:nth-child(4) img { animation-delay: 3.6s; }
+.tap-hint-loop .event-card:nth-child(5) img { animation-delay: 4.8s; }
 
 @media (prefers-reduced-motion: reduce) {
   .tap-hint-loop .event-card img { animation: none; }
