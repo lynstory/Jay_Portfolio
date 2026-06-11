@@ -137,10 +137,7 @@ function renderFeaturedCards() {
   const imageCardsHTML = EVENTS.map((event) => `
     <div class="event-card fade-section" data-event-id="${event.id}" role="button" tabindex="0" aria-label="${event.titleKo} 상세 보기">
       <img src="${event.thumbnail}" alt="${event.titleKo}" loading="lazy" />
-      <div class="event-card-overlay">
-        <p class="event-card-label">${event.hostLabel}</p>
-        <p class="event-card-title">${event.titleKo}</p>
-      </div>
+      <span class="event-card-badge">${event.hostLabel}</span>
     </div>
   `).join('');
 
@@ -149,7 +146,7 @@ function renderFeaturedCards() {
     <div class="event-card event-card-text fade-section" id="view-all-card" role="button" tabindex="0" aria-label="전체 행사 목록 보기">
       <p class="event-card-all-label">전체보기 클릭</p>
       <p class="event-card-all-number">150<span class="event-card-all-plus">+</span></p>
-      <p class="event-card-all-sub">EVENTS HOSTED</p>
+      <p class="event-card-all-sub">행사 진행</p>
     </div>
   `;
 
@@ -258,11 +255,20 @@ function initSmoothScroll() {
    IntersectionObserver — fade-in 애니메이션
    ============================================================ */
 function initFadeIn() {
+  /* hover 불가 기기(모바일 등) 판별 — 1회만 계산 */
+  const noHover = window.matchMedia('(hover: none)').matches;
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+
+          /* 모바일: 이미지 카드 진입 시 줌 힌트 1회 재생 */
+          if (noHover && entry.target.matches('.event-card[data-event-id]')) {
+            setTimeout(() => entry.target.classList.add('tap-hint'), 500);
+          }
+
           observer.unobserve(entry.target);
         }
       });
