@@ -645,7 +645,7 @@ body {
 /* 모바일: 첫 카드부터 순차 줌 루프 — JS가 컨테이너에 tap-hint-loop 부여 */
 @keyframes tapHintZoomLoop {
   0%   { transform: scale(1); }
-  10%  { transform: scale(1.06); }
+  10%  { transform: scale(1.10); }
   20%  { transform: scale(1); }
   100% { transform: scale(1); } /* 나머지 구간 정지 → 카드별 delay로 순차 연출 */
 }
