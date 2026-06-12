@@ -260,7 +260,8 @@ function initSmoothScroll() {
    ============================================================ */
 function initFadeIn() {
   /* hover 불가 기기(모바일 등) 판별 — 1회만 계산 */
-  const noHover = window.matchMedia('(hover: none)').matches;
+  /* (hover: none) OR (pointer: coarse) — 안드로이드 터치 기기 판별 누락 방지 */
+  const noHover = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
   const observer = new IntersectionObserver(
     (entries) => {

@@ -659,9 +659,7 @@ body {
 .tap-hint-loop .event-card:nth-child(4) img { animation-delay: 2.4s; }
 .tap-hint-loop .event-card:nth-child(5) img { animation-delay: 3.2s; }
 
-@media (prefers-reduced-motion: reduce) {
-  .tap-hint-loop .event-card img { animation: none; }
-}
+/* prefers-reduced-motion 차단 제거 — 탭 유도 모션은 기능상 필요, 안드로이드 호환 */
 
 /* 6번째: 텍스트 카드 */
 .event-card-text {
